@@ -1,0 +1,37 @@
+hive> SELECT year, typedoc, COUNT(*) FROM bibliX  WHERE TRIM(typedoc) = 'LIV Livre' OR TRIM(typedoc) = 'LIS Liseuse' OR TRIM(typedoc) = 'LCD Livre disque compact' GROUP BY year, typedoc ORDER BY year ;
+hive> CREATE EXTERNAL TABLE bibliX( year INT, relais STRING, typedoc STRING, nbp INT, id STRING)
+   > COMMENT 'NOne'
+   > ROW FORMAT DELIMITED
+   > FIELDS TERMINATED BY ',' ou '\073' pour le ; ou \\;
+   > STORED AS TEXTFILE
+LOAD DATA LOCAL INPATH '/home/ubuntu/julie/data.csv' OVERWRITE INTO TABLE bibliX;
+
+tendance croissante pour les lcd
+2007    LCD Livre disque compact        107
+2008    LCD Livre disque compact        125
+2009    LCD Livre disque compact        132
+2010    LCD Livre disque compact        134
+2011    LCD Livre disque compact        145
+2012    LCD Livre disque compact        143
+2013    LCD Livre disque compact        142
+2014    LCD Livre disque compact        140
+2015    LCD Livre disque compact        137
+2016    LCD Livre disque compact        141
+2017    LCD Livre disque compact        141
+
+tendance décroissante pour les liv
+2007    LIV Livre                       325
+2008    LIV Livre                       325
+2009    LIV Livre                       314
+2010    LIV Livre                       316
+2011    LIV Livre                       318
+2012    LIV Livre                       303
+2013    LIV Livre                       305
+2014    LIV Livre                       310
+2015    LIV Livre                       316
+2016    LIV Livre                       292
+2017    LIV Livre                       292
+
+apparition de la liseuse dans la possibilité des prêts
+2016    LIS Liseuse     18
+2017    LIS Liseuse     18
